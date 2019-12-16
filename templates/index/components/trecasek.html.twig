@@ -17,10 +17,13 @@
     
         </div> #}
         <div class="code-block">
-            <h6>HTML Code</h6>
-            <pre><code class="language-markup">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-    ...
+            <h4>HTML Code</h4>
+        <p>Before entering the code, you need to open the body tag in which it will be implemented.
+       It is necessary to create a form, which will have the appropriate inputs to send the email.
+        The most important thing is to indicate to whom the e-mail is sent and from whom it is received, if those inputs are not set, an error will occur, i.e. the e-mail will not be sent.
+        </p>
+
+            <pre><code class="language-markup">
     &lt;div class=&quot;contact&quot; id=&quot;contactForm&quot; action=&quot;https://contact-controller.bet.org.rs/email/send&quot; method=&quot;POST&quot;&gt;
     &lt;form id=&quot;contactForm&quot; action=&quot;https://contact-controller.bet.org.rs/email/send&quot; method=&quot;POST&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
@@ -39,6 +42,7 @@
             &lt;textarea placeholder=&quot;Message&quot; id=&quot;message&quot; name=&quot;message&quot; rows=&quot;8&quot; &gt; &lt;/textarea&gt;
             &lt;button class=&quot;btn-ghost pull-right&quot; type=&quot;submit&quot; &gt; Send &lt;/button&gt;
     &lt;form&gt;
+    &lt;/div&gt;
     </code></pre>
         
         </div>
@@ -47,9 +51,23 @@
     <!--//section-block-->
     <div id="js" class="section-block">
         <div class="code-block">
-            <h6>JavaScript Code</h6>
+            <h4>JavaScript Code</h4>
+            </br>
+            <h6>Brief explanation of <i>JS</i></h6>
+
+<p>JavaScript is a programming language that you can use for both front-end and back-end development. When the name JavaScript is used in the context of sending emails Jqueri is the first thing that comes to mind.</p>
+<p>The short answer is that you can't send mail  using JavaScript alone. You'd need a server-side handler to connect with the SMTP server to actually send the mail. There are many simple mail scripts online, such as this one.</p>
+
+<p>For sending an email in js is necessary to:</p>
+<or>
+	<li>To load js library, in this case it is <a href='https://code.jquery.com/' target='_blank'>jquery</a> (here is link for CDN, CDN should be placed in the head tag)</li>
+
+	<li>Use jquery functon to send email (use POST to "submit" data)</li>
+	<li>If conditions - in case of error we can see what is the problem as well as if an email is sent to receive notification of successful sending</li>
+   </or>   </br>      
             <pre><code class="language-js">
-                &lt;$('#contactForm').on('submit',function(e){
+
+    &lt;$('#contactForm').on('submit',function(e){
     e.preventDefault();
 
     var $action = $(this).prop('action');
@@ -66,7 +84,7 @@
         }
 
         if( response === 'success' ){
-
+        
             $this.before( '<div class="alert alert-success">Hvala Vam na poslatoj poruci. <br />Odgovorićemo Vam u najkraćem mogućem roku!</div>' );
             $this.find('input, textarea').val('');
         }
